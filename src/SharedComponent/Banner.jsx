@@ -14,19 +14,19 @@ const Banner = () => {
     <div >
       <Carousel>
                 <div className='h-[90vh]'>
-                    <img src={banner1} className='object-cover' />
+                    <img src={banner1} className='object-fill' />
                 </div>
                 <div className='h-[90vh]'>
-                    <img src={banner2} className='object-cover' />
+                    <img src={banner2} className='object-fill' />
                 </div>
                 <div className='h-[90vh]'>
-                    <img src={banner3} className='object-cover'/>
+                    <img src={banner3} className='object-fill'/>
                 </div>
                 <div className='h-[90vh]'> 
-                    <img src={banner4} className='object-cover'/>
+                    <img src={banner4} className='object-fill'/>
                 </div>
                 <div className='h-[90vh]'>
-                    <img src={banner5} className='object-cover'/>
+                    <img src={banner5} className='object-fill'/>
                 </div>
                
             </Carousel>

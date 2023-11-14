@@ -8,7 +8,7 @@ const NavBar = () => {
     <Link to={'/'}>Home</Link>
     </li>
     <li>
-    <Link to={'/menu'}>Menu</Link>
+    <Link to={'/showcase'}>Showcase</Link>
     </li>
     <li>
     <Link to={'/shop'}>Shop</Link>
@@ -20,7 +20,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-black text-white opacity-70 fixed z-10">
+      <div className="navbar bg-black text-white opacity-70 fixed z-40">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-primary lg:hidden">
