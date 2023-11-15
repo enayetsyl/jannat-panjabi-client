@@ -5,8 +5,41 @@ import contactImage from '../../assets/25.jpg'
 import { FaClock,  FaMobile } from "react-icons/fa";
 import { IoCall } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
+import { useForm } from "react-hook-form"
+import  { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { data } from "autoprefixer";
 
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm();
+
+  const form = useRef();
+
+  const onSubmit = () => {
+    const formData = getValues();
+
+    const data = {
+      to_name: 'Panjabi Mart', // Assuming this is the recipient's name
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
+    console.log(form.current)
+    emailjs.sendForm('contact_service', 'contact_form', form.current, 'j9_KdWhhO5URP7vJN')
+      .then((result) => {
+        console.log(result.text);
+      })
+      .catch((error) => {
+        console.log(error.text);
+      });
+  };
+
   return (
     <div className="mb-20">
       <BannerOtherPage
@@ -60,11 +93,52 @@ const Contact = () => {
       smallText={'--Send Us a Message--'}
       headingText={'contact form'}
       ></Heading>
-
+{/* contact form starts here */}
     <div className="my-10 bg-[#f3f3f3] p-20">
+ 
+    <form ref={form} onSubmit={handleSubmit(onSubmit)}>
+      {/* register your input into the hook by invoking the "register" function */}
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full">
+        <div className="w-full lg:w-1/2 flex flex-col space-y-4">
+        <label htmlFor="" className="text-[#444] text-xl font-semibold ">Name*</label>
+      
+      <input defaultValue="" {...register("name",{required: true})} placeholder="Enter your name" className="w-full p-4"
+     
+      />
+      {errors.name && <span>This field is required</span>}
+        </div> 
+        <div className="w-full lg:w-1/2 flex flex-col space-y-4">
+        <label htmlFor="" className="text-[#444] text-xl font-semibold ">Email*</label>
+    
+      <input defaultValue="" {...register("email", {required: true})} placeholder="Enter your email" className="w-full p-4"
+     
+      />
+      {errors.email && <span>This field is required</span>}
+        </div>
+      </div>
+        <div className="pt-5 w-full flex flex-col  space-y-4">
+        <label htmlFor="text" className="text-[#444] text-xl font-semibold">Phone*</label>
+      
+      <input defaultValue="" {...register("phone", {required: true})} placeholder="Enter your phone number" className="w-full p-4" />
+      {errors.phone && <span>This field is required</span>}
+        </div>
+        <div className="pt-5 w-full flex flex-col  space-y-4">
+        <label htmlFor="" className="text-[#444] text-xl font-semibold">Message*</label>
+     
+      <textarea defaultValue="" {...register("message", {required: true})} placeholder="Enter your message here" className="w-full p-4" rows={10} 
+      name="message"
+      />
+      {errors.message && <span>This field is required</span>}
+        </div>
 
+    <div className="flex justify-center items-center pt-32">
+    <button className="" style={{background: `linear-gradient(90deg, #835D23 0%, #B58130 100%)`}}>
+     <input type="submit" value={'Send Message'} className="text-white text-xl font-bold p-4" />
+     </button>
     </div>
-
+    </form>
+      </div>
+{/* contact form ends here */}
       </Container>
     </div>
   );
