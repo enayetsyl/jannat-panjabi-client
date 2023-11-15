@@ -2,34 +2,34 @@ import BannerOtherPage from "../../SharedComponent/BannerOtherPage";
 import Container from "../../SharedComponent/Container";
 import Heading from "../../SharedComponent/Heading";
 import contactImage from '../../assets/25.jpg'
-import { FaClock,  FaMobile } from "react-icons/fa";
+import { FaClock} from "react-icons/fa";
 import { IoCall } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { useForm } from "react-hook-form"
 import  { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { data } from "autoprefixer";
+// import { data } from "autoprefixer";
 
 const Contact = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
+  
   } = useForm();
 
   const form = useRef();
 
   const onSubmit = () => {
-    const formData = getValues();
+    // const formData = getValues();
 
-    const data = {
-      to_name: 'Panjabi Mart', // Assuming this is the recipient's name
-      from_name: formData.name,
-      from_email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    };
+    // const data = {
+    //   to_name: 'Panjabi Mart', // Assuming this is the recipient's name
+    //   from_name: formData.name,
+    //   from_email: formData.email,
+    //   phone: formData.phone,
+    //   message: formData.message,
+    // };
     console.log(form.current)
     emailjs.sendForm('contact_service', 'contact_form', form.current, 'j9_KdWhhO5URP7vJN')
       .then((result) => {
@@ -102,7 +102,7 @@ const Contact = () => {
         <div className="w-full lg:w-1/2 flex flex-col space-y-4">
         <label htmlFor="" className="text-[#444] text-xl font-semibold ">Name*</label>
       
-      <input defaultValue="" {...register("name",{required: true})} placeholder="Enter your name" className="w-full p-4"
+      <input defaultValue="" {...register("user_name",{required: true})} placeholder="Enter your name" className="w-full p-4"
      
       />
       {errors.name && <span>This field is required</span>}
@@ -110,7 +110,7 @@ const Contact = () => {
         <div className="w-full lg:w-1/2 flex flex-col space-y-4">
         <label htmlFor="" className="text-[#444] text-xl font-semibold ">Email*</label>
     
-      <input defaultValue="" {...register("email", {required: true})} placeholder="Enter your email" className="w-full p-4"
+      <input defaultValue="" {...register("user_email", {required: true})} placeholder="Enter your email" className="w-full p-4"
      
       />
       {errors.email && <span>This field is required</span>}

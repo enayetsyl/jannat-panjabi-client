@@ -6,7 +6,7 @@ const RecommendedProducts = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/panjabi`)
+    fetch(`https://jannat-panjabi-server.vercel.app/panjabi`)
       .then((res) => res.json())
       .then((data) => {
         const popularItems = data.filter((item) => item.category === 'popular');

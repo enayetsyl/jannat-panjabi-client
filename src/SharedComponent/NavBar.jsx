@@ -1,26 +1,28 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from '../assets/logo.jpg'
 
 const NavBar = () => {
 
+    
   const navItems = <>
-    <li>
-    <Link to={'/'}>Home</Link>
+    <li className="bg-[#d99904] py-2 px-4 ">
+    <NavLink to={'/'} activeClassName="active">Home</NavLink>
     </li>
-    <li>
-    <Link to={'/showcase'}>Showcase</Link>
+    <li className="bg-[#d99904] py-2 px-4 ">
+    <NavLink to={'/showcase'} activeClassName="active">Showcase</NavLink>
     </li>
-    <li>
-    <Link to={'/shop'}>Shop</Link>
+    <li className="bg-[#d99904] py-2 px-4 ">
+    <NavLink to={'/shop'} activeClassName="active">Shop</NavLink>
     </li>
-    <li>
-    <Link to={'/contact'}>Contact</Link>
+    <li className="bg-[#d99904] py-2 px-4 ">
+    <NavLink to={'/contact'} activeClassName="active">Contact</NavLink>
     </li>
+    
   </>
 
   return (
     <div>
-      <div className="navbar bg-black text-white opacity-70 fixed z-40">
+      <div className="navbar bg-white text-white opacity-90 fixed z-40">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className=" text-[#d99904]  lg:hidden mr-10">
@@ -35,14 +37,14 @@ const NavBar = () => {
     <img src={logo} alt="" className="h-20 w-20" />
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="gap-10 text-black font-bold  menu-horizontal  px-1">
       {
         navItems
       }
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="bt">Button</a>
+    <a className="btn">Button</a>
   </div>
 </div>
     </div>
